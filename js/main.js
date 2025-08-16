@@ -1,9 +1,3 @@
-/* ===========================
-   main.js - Interactividad básica
-   =========================== */
-
-// 1) Scroll Reveal (aparecer al hacer scroll)
-// ==========================================
 const revealElements = document.querySelectorAll(".reveal");
 
 function checkReveal() {
@@ -21,18 +15,13 @@ function checkReveal() {
 }
 
 window.addEventListener("scroll", checkReveal);
-checkReveal(); // Llamada inicial al cargar
+checkReveal();
 
-
-// 2) Resaltado del enlace activo en el menú
-// ==========================================
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("header nav ul li a");
 
 function setActiveLink() {
   let current = "";
-
-  // Detecta qué sección está más cerca del top
   sections.forEach((section) => {
     const sectionTop = section.offsetTop - 100; // margen para header sticky
     const sectionHeight = section.clientHeight;
@@ -41,8 +30,6 @@ function setActiveLink() {
       current = section.getAttribute("id");
     }
   });
-
-  // Cambia el estado activo en el menú
   navLinks.forEach((link) => {
     link.classList.remove("active");
     if (link.getAttribute("href") === `#${current}`) {
@@ -52,14 +39,6 @@ function setActiveLink() {
 }
 
 window.addEventListener("scroll", setActiveLink);
-
-
-// 3) Botón "Volver arriba"
-// ==========================================
-const backToTop = document.createElement("button");
-backToTop.innerText = "↑";
-backToTop.id = "backToTop";
-document.body.appendChild(backToTop);
 
 // Estilo inline básico (puedes moverlo a CSS)
 backToTop.style.position = "fixed";
@@ -72,7 +51,6 @@ backToTop.style.borderRadius = "50%";
 backToTop.style.cursor = "pointer";
 backToTop.style.zIndex = "1000";
 
-// Mostrar/ocultar el botón según scroll
 window.addEventListener("scroll", () => {
   if (window.scrollY > 400) {
     backToTop.style.display = "block";
