@@ -159,6 +159,57 @@ main > section > .container { display: grid; gap: clamp(16px, 2.5vh, 28px); }
 .proyecto p { margin-bottom: 2px; }
 
 /* =====================
+   5B) LISTA DE PROYECTOS ESTÁTICA (projects.html)
+===================== */
+.projects-list {
+  max-width: 900px;
+  margin: 100px auto 50px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-item {
+  background: var(--card-bg);
+  padding: 15px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.project-info p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-item .btn {
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+
+/* =====================
    6) BOTONES
 ===================== */
 .btn {
@@ -226,6 +277,47 @@ footer .container {
 
 footer a { color: var(--accent); }
 footer a:hover { text-decoration: underline; }
+
+.carousel {
+  position: relative;
+  max-width: 600px; /* ajusta el ancho del carrusel */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel .proyecto {
+  min-width: 100%; /* cada tarjeta ocupa todo el ancho del carrusel */
+  box-sizing: border-box;
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s;
+}
+
+.carousel button:hover {
+  background: color-mix(in oklab, var(--accent) 80%, black);
+}
+
+.carousel .prev { left: 10px; }
+.carousel .next { right: 10px; }
+
 
 /* =====================
    9) RESPONSIVE / ADAPTACIONES

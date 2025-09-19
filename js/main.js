@@ -1,3 +1,6 @@
+// ========================
+// 1) REVEAL ANIMATION
+// ========================
 const revealElements = document.querySelectorAll(".reveal");
 
 function checkReveal() {
@@ -7,9 +10,9 @@ function checkReveal() {
     const boxTop = el.getBoundingClientRect().top;
 
     if (boxTop < triggerBottom) {
-      el.classList.add("show"); // Añade clase visible
+      el.classList.add("show"); // visible
     } else {
-      el.classList.remove("show"); // Quita clase (si quieres que desaparezca al volver arriba)
+      el.classList.remove("show"); // oculto si vuelves arriba
     }
   });
 }
@@ -17,6 +20,9 @@ function checkReveal() {
 window.addEventListener("scroll", checkReveal);
 checkReveal();
 
+// ========================
+// 2) NAV ACTIVE LINKS
+// ========================
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("header nav ul li a");
 
@@ -40,6 +46,13 @@ function setActiveLink() {
 
 window.addEventListener("scroll", setActiveLink);
 
+// ========================
+// 3) BACK TO TOP BUTTON
+// ========================
+const backToTop = document.createElement("button");
+backToTop.innerText = "↑";
+document.body.appendChild(backToTop);
+
 // Estilo inline básico (puedes moverlo a CSS)
 backToTop.style.position = "fixed";
 backToTop.style.bottom = "20px";
@@ -52,14 +65,67 @@ backToTop.style.cursor = "pointer";
 backToTop.style.zIndex = "1000";
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
+  backToTop.style.display = window.scrollY > 400 ? "block" : "none";
 });
 
-// Acción del botón → scroll suave al top
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+
+// ========================
+// 4) CAROUSEL (Personal Projects Responsive)
+// ========================
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  if (!track) return; // Evita errores si no existe el carrusel
+
+  const slides = Array.from(track.children);
+  const nextBtn = document.querySelector(".next");
+  const prevBtn = document.querySelector(".prev");
+
+  let currentIndex = 0;
+  let slidesToShow = 1; // por defecto
+  let slideWidth = 0;
+
+  function setSlidesToShow() {
+    const width = window.innerWidth;
+
+    if (width < 600) {
+      slidesToShow = 1; // móvil
+    } else if (width < 1024) {
+      slidesToShow = 2; // tablet
+    } else {
+      slidesToShow = 3; // desktop
+    }
+
+    slideWidth = track.clientWidth / slidesToShow;
+
+    slides.forEach((slide) => {
+      slide.style.minWidth = `${slideWidth}px`;
+    });
+
+    updateSlide();
+  }
+
+  function updateSlide() {
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < slides.length - slidesToShow) {
+      currentIndex++;
+      updateSlide();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlide();
+    }
+  });
+
+  window.addEventListener("resize", setSlidesToShow);
+  setSlidesToShow(); // inicial
 });
