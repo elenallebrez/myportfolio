@@ -74,58 +74,60 @@ backToTop.addEventListener("click", () => {
 
 
 // ========================
-// 4) CAROUSEL (Personal Projects Responsive)
+// 4) CAROUSEL (Responsive para múltiples carruseles)
 // ========================
 document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".carousel-track");
-  if (!track) return; // Evita errores si no existe el carrusel
+  const carousels = document.querySelectorAll(".carousel");
 
-  const slides = Array.from(track.children);
-  const nextBtn = document.querySelector(".next");
-  const prevBtn = document.querySelector(".prev");
+  carousels.forEach((carousel) => {
+    const track = carousel.querySelector(".carousel-track");
+    const slides = Array.from(track.children);
+    const nextBtn = carousel.querySelector(".next");
+    const prevBtn = carousel.querySelector(".prev");
 
-  let currentIndex = 0;
-  let slidesToShow = 1; // por defecto
-  let slideWidth = 0;
+    let currentIndex = 0;
+    let slidesToShow = 1;
+    let slideWidth = 0;
 
-  function setSlidesToShow() {
-    const width = window.innerWidth;
+    function setSlidesToShow() {
+      const width = window.innerWidth;
 
-    if (width < 600) {
-      slidesToShow = 1; // móvil
-    } else if (width < 1024) {
-      slidesToShow = 2; // tablet
-    } else {
-      slidesToShow = 3; // desktop
+      if (width < 600) {
+        slidesToShow = 1; // móvil
+      } else if (width < 1024) {
+        slidesToShow = 2; // tablet
+      } else {
+        slidesToShow = 3; // desktop
+      }
+
+      slideWidth = track.clientWidth / slidesToShow;
+
+      slides.forEach((slide) => {
+        slide.style.minWidth = `${slideWidth}px`;
+      });
+
+      updateSlide();
     }
 
-    slideWidth = track.clientWidth / slidesToShow;
+    function updateSlide() {
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
 
-    slides.forEach((slide) => {
-      slide.style.minWidth = `${slideWidth}px`;
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < slides.length - slidesToShow) {
+        currentIndex++;
+        updateSlide();
+      }
     });
 
-    updateSlide();
-  }
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlide();
+      }
+    });
 
-  function updateSlide() {
-    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-  }
-
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < slides.length - slidesToShow) {
-      currentIndex++;
-      updateSlide();
-    }
+    window.addEventListener("resize", setSlidesToShow);
+    setSlidesToShow();
   });
-
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSlide();
-    }
-  });
-
-  window.addEventListener("resize", setSlidesToShow);
-  setSlidesToShow(); // inicial
 });

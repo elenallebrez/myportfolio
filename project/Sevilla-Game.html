@@ -5,81 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sevilla Reigns — Portfolio de Elena Fernández-Llebrez</title>
 
+  <!-- Estilos globales -->
   <link rel="stylesheet" href="../css/styles.css" />
 
+  <!-- Metadatos básicos (SEO) -->
   <meta name="description" content="Game about Sevilla" />
   <meta name="author" content="Elena Fernández-Llebrez" />
 
+  <!-- Social (opcional) -->
   <meta property="og:title" content="Reigns Sevillano" />
   <meta property="og:description" content="Pequeño juego inspirado en el Reings" />
-
 </head>
 <body>
-  <!-- ============ HEADER ============ -->
   <header>
     <nav>
       <div class="container">
         <a href="../index.html" class="brand">← Volver al inicio</a>
+        <ul>
+          <li><a href="../allProjects.html">Proyectos</a></li>
+          <li><a href="../sobre-mi.html">Sobre mí</a></li>
+        </ul>
       </div>
     </nav>
   </header>
-
-  <!-- ============ HERO DEL PROYECTO ============ -->
-   <main>
-    <section id="project-hero" class="center reveal is-visible">
-        <div class="container">
-            <h1>Tú verás lo que haces</h1>
-            <p class="muted">Juego estilo Reigns con humor sevillano y decisiones absurdas</p>
-            <p>
-            <span class="tag">Python</span>
-            <span class="tag">Pygame</span>
-            <span class="tag">JSON</span>
-            </p>
-            <p>
-            <a class="btn" href="https://github.com/tuusuario/reigns-sevillano" target="_blank" rel="noopener">Ver en GitHub</a>
-            </p>
+    <main>
+    <!-- Hero del proyecto -->
+    <section id="project-hero" class="reveal is-visible">
+      <div class="container center">
+        <h1>Reigns Sevillano</h1>
+        <p class="muted">
+          Juego estilo Reigns con humor sevillano y decisiones.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pygame</span>
+          <span class="tag">JSON</span>
         </div>
-        </section>
+        <p>
+          <a class="btn" href="https://github.com/elenallebrez/Sevilla-Reigns-Game" target="_blank" rel="noopener">Ver en GitHub</a>
+        </p>
+      </div>
+    </section>
 
-        <!-- ============ DETALLES TÉCNICOS ============ -->
-        <section id="project-details" class="center reveal is-visible">
-        <div class="container">
-            <h2>Detalles técnicos</h2>
-            <ul>
-            <li><strong>Stack:</strong> Python, JSON</li>
-            <li><strong>Arquitectura:</strong> Pygame modular (carpetas <code>core</code>, <code>screens</code>, <code>ui</code>, <code>data</code>)</li>
-            <li><strong>Mi rol:</strong> Developer & Game Designer</li>
-            <li><strong>Estado:</strong> Publicado</li>
-            </ul>
-            <h3>Cómo lo construí</h3>
-            <ol>
-            <li>Diseñé la estructura modular para separar pantallas, lógica y datos.</li>
+    <!-- Resumen -->
+    <section id="project-summary" class="reveal is-visible">
+      <div class="container">
+        <p>
+          RESUMEN MAS EXTENSO
+        </p>
+      </div>
+    </section>
+
+    <!-- Detalles técnicos -->
+    <section id="project-details" class="reveal is-visible">
+      <div class="container">
+        <h3 class="center">Technical Details</h3>
+        <ul>
+          <li><strong>Stack:</strong> Python, JSON</li>
+          <li><strong>Arquitectura:</strong> Pygame modular (carpetas <code>core</code>, <code>screens</code>, <code>ui</code>, <code>data</code>)</li>
+          <li><strong>Mi rol:</strong> Developer & Game Designer</li>
+          <li><strong>Estado:</strong> Publicado</li>
+        </ul>
+
+        <strong>Cómo lo construí</strong>
+        <ol>
+          <li>Diseñé la estructura modular para separar pantallas, lógica y datos.</li>
             <li>Implementé animaciones de swipe izquierda/derecha para decisiones al estilo Reigns.</li>
             <li>Integré un sistema de condiciones de victoria/derrota, con mensajes de final personalizados y cargados desde JSON.</li>
             <li>Mejoré el frontend con elementos visuales: contenedor de stats con azulejos, interfaz más limpia y humor local.</li>
-            </ol>
-        </div>
-        </section>
-
-        <!-- ============ RESULTADOS / APRENDIZAJES ============ -->
-        <section id="project-outcomes" class="center reveal is-visible">
-        <div class="container">
-            <h2>Resultados & aprendizajes</h2>
-            <ul>
-            <li><strong>Resultados:</strong> Proyecto jugable y publicado en GitHub; feedback positivo por la originalidad cultural y el humor absurdo.</li>
-            <li><strong>Aprendizajes:</strong> Profundicé en Pygame, diseño de arquitecturas modulares y uso de JSON para narrativa dinámica; también experimenté con UX orientado a decisiones rápidas.</li>
-            <li><strong>Siguientes pasos:</strong> Añadir más eventos y personajes, mejorar efectos visuales/sonoros, e integrar un sistema de logros para aumentar rejugabilidad.</li>
-            </ul>
-        </div>
-        </section>
-
+        </ol>
+      </div>
+    </section>
   </main>
+
   <footer>
-    <div class="container">
-    <p>© 2025 Elena Fernández-Llebrez</p>
-    <p><a href="https://github.com/elenallebrez">GitHub</a> | <a href="mailto:elenafernandezllebrez@gmail.com">Email</a>| <a href="https://www.linkedin.com/in/elena-fdezllebrez/">Linkedin</a></p>
+    <div class="container center">
+      <p>© 2025 Elena Fernández-Llebrez</p>
+      <p>
+        <a href="https://github.com/elenallebrez">GitHub</a> | 
+        <a href="mailto:elenafernandezllebrez@gmail.com">Email</a> | 
+        <a href="https://www.linkedin.com/in/elena-fdezllebrez/">Linkedin</a>
+      </p>
     </div>
   </footer>
+
   <script src="../js/main.js"></script>
 </body>
 </html>

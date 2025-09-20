@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NLP pipeline — Portfolio de Elena Fernández-Llebrez</title>
@@ -9,115 +9,92 @@
   <link rel="stylesheet" href="../css/styles.css" />
 
   <!-- Metadatos básicos (SEO) -->
-  <meta name="description" content="[Frase corta: qué hace el proyecto y en qué destaca]." />
+  <meta name="description" content="Pipeline de NLP para procesar y enriquecer conversaciones de un chatbot de salud mental." />
   <meta name="author" content="Elena Fernández-Llebrez" />
 
   <!-- Social (opcional) -->
   <meta property="og:title" content="NLP pipeline" />
-  <meta property="og:description" content="[Resumen breve del proyecto]" />
-  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Pipeline de NLP para procesar y enriquecer conversaciones de un chatbot de salud mental." />
 </head>
 <body>
-  <!-- ============ HEADER ============ -->
   <header>
     <nav>
       <div class="container">
         <a href="../index.html" class="brand">← Volver al inicio</a>
         <ul>
-          <li><a href="../index.html#proyectos-personales">Proyectos</a></li>
+          <li><a href="../allProjects.html">Proyectos</a></li>
           <li><a href="../sobre-mi.html">Sobre mí</a></li>
         </ul>
       </div>
     </nav>
   </header>
+  <main>
+    <!-- Hero del proyecto -->
+    <section id="project-hero" class="reveal is-visible">
+      <div class="container center">
+        <h1>NLP pipeline</h1>
+        <p class="muted">
+          Pipeline de NLP para procesar y enriquecer conversaciones de un chatbot de salud mental.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Data Cleaning</span>
+          <span class="tag">Embeddings</span>
+          <span class="tag">Cosine Similarity</span>
+        </div>
+        <p>
+          <a class="btn" href="https://github.com/elenallebrez/NLP-Pipeline/tree/main" target="_blank" rel="noopener">Ver en GitHub</a>
+        </p>
+      </div>
+    </section>
 
-  <!-- ============ HERO DEL PROYECTO ============ -->
-  <section id="project-hero" class="center reveal is-visible">
-    <div class="container">
-      <h1>NLP pipeline</h1>
-      <p class="muted">[1–2 líneas: qué es y para quién está hecho]</p>
+    <!-- Resumen -->
+    <section id="project-summary" class="reveal is-visible">
+      <div class="container">
+        <p>
+          El proyecto nace de la necesidad de adaptar un chatbot de salud mental a diferentes contextos culturales.  
+          Para ello, diseñé un pipeline de NLP capaz de limpiar datos, extraer contexto y generar embeddings con diferentes LLMs.  
+          Como resultado, conseguimos datasets listos para entrenamiento, análisis comparativo de embeddings entre OpenAI y Gemini, y generación sintética de frases sensibles para tareas de moderación.
+        </p>
+      </div>
+    </section>
 
-      <!-- Etiquetas de tecnologías (usa las que quieras) -->
-      <p>
-        <span class="tag">Python</span>
-        <span class="tag">OpenAI</span>
-        <span class="tag">Gemini</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Data Cleaning</span>
-      </p>
+    <!-- Detalles técnicos -->
+    <section id="project-details" class="reveal is-visible">
+      <div class="container">
+        <h3 class="center">Technical Details</h3>
+        <ul>
+          <li><strong>Stack:</strong> Python, NumPy, OpenAI API, Gemini API</li>
+          <li><strong>Arquitectura:</strong> Jupyter Notebooks organizados en módulos de limpieza, embeddings, generación de datos y análisis</li>
+          <li><strong>Mi rol:</strong> Diseño del pipeline, procesamiento de datos en bruto, generación de embeddings, comparación entre modelos y síntesis de datasets para moderación cultural</li>
+          <li><strong>Tiempo:</strong> Agosto–Septiembre 2025 (India)</li>
+          <li><strong>Estado:</strong>  Publicado</li>
+        </ul>
 
-      <!-- Botones principales -->
-      <p>
-        <a class="btn" href="https://github.com/elenallebrez/NLP-Pipeline/tree/main" target="_blank" rel="noopener">Ver en GitHub</a>
-      </p>
-    </div>
-  </section>
+        <strong>Cómo lo construí</strong>
+        <ol>
+          <li>Estandaricé y limpié los datos crudos en Excel → JSON mediante varios pasos de preprocesamiento.</li>
+          <li>Implementé la generación de embeddings en paralelo con OpenAI y Gemini, y desarrollé un comparador con <em>cosine similarity</em>.</li>
+          <li>Diseñé un generador de datasets sintéticos de “red flags” para pruebas de moderación y adaptación cultural.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
 
-  <!-- ============ RESUMEN / PROBLEMA & SOLUCIÓN ============ -->
-  <section id="project-summary" class="reveal">
-    <div class="container">
-      <h2>Resumen</h2>
-      <p>
-        <!-- Cuenta el “pitch”: problema → solución → resultado -->
-        [Problema: 1 frase].  
-        [Solución: 1–2 frases explicando la idea].  
-        [Resultado/impacto: 1 frase con dato o mejora concreta si la tienes].
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ DETALLES TÉCNICOS ============ -->
-  <section id="project-details" class="reveal">
-    <div class="container">
-      <h2>Detalles técnicos</h2>
-      <ul>
-        <li><strong>Stack:</strong> [ej. Java, Spring Boot, WebSockets, CRDTs]</li>
-        <li><strong>Arquitectura:</strong> [ej. API REST + worker + DB, patrón X]</li>
-        <li><strong>Mi rol:</strong> [qué hiciste tú exactamente]</li>
-        <li><strong>Tiempo:</strong> Julio-Agosto 2025</li>
-        <li><strong>Estado:</strong> Publicado </li>
-      </ul>
-      <h3>Cómo lo construí</h3>
-      <ol>
-        <li>[Paso clave 1: decisiones de diseño o setup]</li>
-        <li>[Paso clave 2: retos + cómo los resolviste]</li>
-        <li>[Paso clave 3: pruebas/medición de resultados]</li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============ RESULTADOS / APRENDIZAJES ============ -->
-  <section id="project-outcomes" class="reveal">
-    <div class="container">
-      <h2>Resultados & aprendizajes</h2>
-      <ul>
-        <li><strong>Resultados:</strong> [métricas, feedback, descargas, usuarios, calificaciones…]</li>
-        <li><strong>Aprendizajes:</strong> [qué te llevas: tech, gestión, UX, performance…]</li>
-        <li><strong>Siguientes pasos:</strong> [roadmap corto: features pendientes]</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ CTA FINAL ============ -->
-  <section id="project-cta" class="center reveal">
-    <div class="container">
-      <p class="muted">¿Te interesa ver el código o probarlo?</p>
-      <p>
-        <a class="btn" href="https://github.com/tuusuario/repositorio" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn btn--outline" href="../index.html">Volver a proyectos</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
   <footer>
-    <div class="container">
-    <p>© 2025 Elena Fernández-Llebrez</p>
-    <p><a href="https://github.com/elenallebrez">GitHub</a> | <a href="mailto:elenafernandezllebrez@gmail.com">Email</a>| <a href="https://www.linkedin.com/in/elena-fdezllebrez/">Linkedin</a></p>
+    <div class="container center">
+      <p>© 2025 Elena Fernández-Llebrez</p>
+      <p>
+        <a href="https://github.com/elenallebrez">GitHub</a> | 
+        <a href="mailto:elenafernandezllebrez@gmail.com">Email</a> | 
+        <a href="https://www.linkedin.com/in/elena-fdezllebrez/">Linkedin</a>
+      </p>
     </div>
   </footer>
-  <script src="../js/main.js"></script>
 
-  <!-- Tip: añade la clase "reveal" a los bloques que quieras animar al hacer scroll -->
+  <script src="../js/main.js"></script>
 </body>
 </html>
