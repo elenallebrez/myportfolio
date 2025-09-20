@@ -130,6 +130,55 @@ section.container > div {
 .proyecto h3 { margin-top:4px; }
 .proyecto p { margin-bottom:2px; }
 
+/* =====================
+   5B) LISTA DE PROYECTOS ESTÁTICA (projects.html)
+===================== */
+.projects-list {
+  max-width: 900px;
+  margin: 100px auto 50px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-item {
+  background: var(--card-bg);
+  padding: 15px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.project-info p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-item .btn {
+  margin-left: 20px;
+  white-space: nowrap;
+}
 
 /* =====================
    6) BOTONES
