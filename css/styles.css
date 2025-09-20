@@ -155,7 +155,15 @@ section.container > div {
   box-shadow: var(--shadow-md);
   border-color: color-mix(in oklab, var(--accent) 32%, var(--card-border));
 }
-.proyecto img { aspect-ratio:16/9; object-fit:cover; border-radius:calc(var(--radius)-6px); }
+.proyecto img {
+  width: 100%;               /* ocupa el ancho disponible */
+  max-height: 160px;         /* ajusta aquí lo pequeñas que quieres que se vean */
+  object-fit: contain;       /* se muestran enteras sin recortarse */
+  border-radius: calc(var(--radius) - 6px);
+  margin: 0 auto;            /* centra la imagen dentro del artículo */
+}
+
+
 .proyecto h3 { margin-top:4px; }
 .proyecto p { margin-bottom:2px; }
 
