@@ -1,14 +1,3 @@
-/*
-══════════════════════════════════════════════════════════════════════
-  styles.css — Starter minimal para portfolio one-page + detalle
-  Autor: Tú :)  |  Propósito: darte una base clara y editable
-
-  Cómo usarlo:
-  1) Cambia los “tokens” de diseño en :root (colores, tipografías, radios).
-  2) Mantén la estructura del index.html que ya tienes.
-  3) Ajusta secciones, grid y tarjetas según tus proyectos.
-
-══════════════════════════════════════════════════════════════════════
 /* =====================
    1) TOKENS / VARIABLES
 ===================== */
@@ -172,13 +161,17 @@ section.container > div {
 ===================== */
 .projects-list {
   max-width: 900px;
-  margin: 100px auto 50px auto;
+  margin: 50px auto 50px auto; /* reduce margen superior */
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+/* Para que el primer proyecto no tenga margen extra */
+.project-item:first-child {
+  margin-top: 0;
+}
 .project-item {
   background: var(--card-bg);
   padding: 15px 20px;
