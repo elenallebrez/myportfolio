@@ -64,6 +64,32 @@ p { color: var(--muted); margin-bottom: 0.8em; }
   margin-inline: auto;
 }
 
+/* Encabezado de cada sección de proyectos */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px; /* separa el título del grid */
+}
+
+/* Botón/ver más */
+.section-header .ver-mas {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.section-header .ver-mas:hover {
+  color: color-mix(in oklab, var(--accent) 80%, white);
+}
+
+/* Espaciado entre secciones de proyectos */
+#proyectos-destacados,
+#proyectos-universitarios {
+  margin-bottom: 48px; /* da aire antes del siguiente título */
+}
+
+
 /* =====================
    3) HEADER / NAV
 ===================== */
