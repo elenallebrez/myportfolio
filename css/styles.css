@@ -64,15 +64,18 @@ p { color: var(--muted); margin-bottom: 0.8em; }
   margin-inline: auto;
 }
 
-/* Encabezado de cada sección de proyectos */
 .section-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* centra todo el bloque */
   align-items: center;
-  margin-bottom: 16px; /* separa el título del grid */
+  gap: 12px; /* espacio entre el h2 y el link */
+  margin-bottom: 16px;
 }
 
-/* Botón/ver más */
+.section-header h2 {
+  margin: 0; /* elimina márgenes raros */
+}
+
 .section-header .ver-mas {
   font-size: 0.95rem;
   color: var(--accent);
