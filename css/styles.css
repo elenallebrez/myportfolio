@@ -9,48 +9,39 @@
   3) Ajusta secciones, grid y tarjetas según tus proyectos.
 
 ══════════════════════════════════════════════════════════════════════
-*/
-
 /* =====================
    1) TOKENS / VARIABLES
-   Cambia aquí y se actualiza todo el sitio.
 ===================== */
 :root {
-  --bg: #0f172a;              /* Fondo principal: azul gris oscuro */
-  --text: #f1f5f9;            /* Texto principal: casi blanco */
-  --muted: #94a3b8;           /* Texto secundario: gris azulado */
-  --accent: #38bdf8;          /* Azul acento (profesional y moderno) */
-  --accent-contrast: #0f172a; /* Contraste sobre el acento */
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-contrast: #0f172a;
 
-  --card-bg: #1e293b;         /* Tarjetas: gris oscuro con azul */
+  --card-bg: #1e293b;
   --card-border: rgba(148, 163, 184, 0.2);
 
   --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-  --container: 1100px;  /* ancho máximo del contenido */
-  --header-h: 64px;      /* altura del header fijo */
-  --gap: 24px;           /* separación general */
-  --radius: 16px;        /* radios de borde para tarjetas y botones */
+  --container: 1100px;
+  --header-h: 64px;
+  --gap: 24px;
+  --radius: 16px;
 
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.35);
-}
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.25);
+  --shadow-md: 0 12px 36px rgba(0,0,0,0.35);
 }
 
 /* =====================
-   2) RESETEO SUAVE + BASE
+   2) RESET SUAVE + BASE
 ===================== */
-* { box-sizing: border-box; }
+*,
+*::before,
+*::after { margin:0; padding:0; box-sizing:border-box; }
+
 html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
@@ -60,88 +51,72 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-
-/* Enlaces accesibles al navegar con teclado */
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
-/* Tipografías escaladas */
-h1, h2, h3 { line-height: 1.2; margin: 0 0 0.5em; }
-h1 { font-size: clamp(2rem, 3.5vw, 3rem); }
-h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
-h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
-p { color: var(--muted); margin: 0 0 0.8em; }
+h1,h2,h3 { line-height: 1.2; margin-bottom: 0.5em; }
+h1 { font-size: clamp(2rem,3.5vw,3rem); }
+h2 { font-size: clamp(1.5rem,2.6vw,2.1rem); }
+h3 { font-size: clamp(1.15rem,2vw,1.35rem); }
+p { color: var(--muted); margin-bottom: 0.8em; }
 
-/* Contenedores centrados: aplica a nav y a secciones */
 .container {
-  width: min(100% - 32px, var(--container));
+  width: min(100% - 32px,var(--container));
   margin-inline: auto;
 }
 
 /* =====================
-   3) HEADER / NAV PEGADO ARRIBA
+   3) HEADER / NAV
 ===================== */
 header {
   position: sticky;
-  top: 0; z-index: 50;
+  top:0; z-index:50;
   height: var(--header-h);
   background: color-mix(in oklab, var(--bg) 88%, transparent);
   backdrop-filter: saturate(1.2) blur(10px);
   border-bottom: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
 }
 
-header nav { height: 100%; }
-header nav .container { height: 100%; display: flex; align-items: center; justify-content: center; }
-
-/* Logo/Nombre opcional a la izquierda */
-.brand {
-  font-weight: 700;
-  letter-spacing: 0.2px;
+header nav .container {
+  height:100%; display:flex; align-items:center; justify-content:center;
 }
 
-/* Menú */
 nav ul {
-  list-style: none; padding: 0; margin: 0;
-  display: flex; align-items: center; gap: 8px;
+  list-style:none; display:flex; gap:8px; align-items:center;
 }
 nav a {
-  display: inline-block;
-  padding: 10px 12px;
-  border-radius: 10px;
-  text-decoration: none; /* quita la línea */
-  color: inherit;        /* mantiene el color del texto */
+  display:inline-block; padding:10px 12px; border-radius:10px; color:inherit;
 }
 nav a:hover { background: color-mix(in oklab, var(--accent) 16%, transparent); }
 nav a[aria-current="page"], nav a.active { background: color-mix(in oklab, var(--accent) 22%, transparent); }
 
 /* =====================
-   4) SECCIONES EN ALTO COMPLETO
+   4) SECCIONES / MAIN
 ===================== */
 main > section {
-  display: grid; align-content: center; /* centra verticalmente su contenido */
-  padding-block: clamp(40px, 10vh, 120px);
+  display: block;
+  padding-block: 24px;
+  padding-inline: 16px;
 }
 
-/* Para que el contenido no se pegue a los lados */
-main > section > .container { display: grid; gap: clamp(16px, 2.5vh, 28px); }
-
-
+/* Espacio entre bloques de experiencia / educación */
+section.container > div {
+  margin-bottom: 1.5em;
+}
 
 /* =====================
-   5) GRID DE PROYECTOS
+   5) PROYECTOS
 ===================== */
 .grid-proyectos {
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  align-items: stretch;
+  display:grid; gap:var(--gap);
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
 }
 
 .proyecto {
-  display: grid; gap: 12px;
+  display:grid; gap:12px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  padding: 16px;
+  padding:16px;
   box-shadow: var(--shadow-sm);
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
@@ -150,64 +125,9 @@ main > section > .container { display: grid; gap: clamp(16px, 2.5vh, 28px); }
   box-shadow: var(--shadow-md);
   border-color: color-mix(in oklab, var(--accent) 32%, var(--card-border));
 }
-.proyecto img {
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: calc(var(--radius) - 6px);
-}
-.proyecto h3 { margin-top: 4px; }
-.proyecto p { margin-bottom: 2px; }
-
-/* =====================
-   5B) LISTA DE PROYECTOS ESTÁTICA (projects.html)
-===================== */
-.projects-list {
-  max-width: 900px;
-  margin: 100px auto 50px auto;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.project-item {
-  background: var(--card-bg);
-  padding: 15px 20px;
-  border-radius: var(--radius);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.project-info {
-  flex: 1;
-}
-
-.project-info h3 {
-  margin: 0;
-  font-size: 1.3rem;
-  color: var(--text);
-}
-
-.project-info p {
-  margin: 5px 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.project-item .btn {
-  margin-left: 20px;
-  white-space: nowrap;
-}
-
+.proyecto img { aspect-ratio:16/9; object-fit:cover; border-radius:calc(var(--radius)-6px); }
+.proyecto h3 { margin-top:4px; }
+.proyecto p { margin-bottom:2px; }
 
 /* =====================
    6) BOTONES
@@ -215,143 +135,47 @@ main > section > .container { display: grid; gap: clamp(16px, 2.5vh, 28px); }
 .btn {
   --_bg: var(--accent);
   --_fg: var(--accent-contrast);
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 10px 14px;
-  font-weight: 600;
-  border-radius: 999px;
-  border: 1px solid color-mix(in oklab, var(--_bg) 8%, transparent);
-  background: var(--_bg);
-  color: var(--_fg);
-  box-shadow: 0 6px 18px color-mix(in oklab, var(--_bg) 25%, transparent);
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:10px 14px; font-weight:600;
+  border-radius:999px;
+  border: 1px solid color-mix(in oklab,var(--_bg) 8%,transparent);
+  background:var(--_bg); color:var(--_fg);
+  box-shadow: 0 6px 18px color-mix(in oklab,var(--_bg) 25%,transparent);
   transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
 }
-.btn:hover { transform: translateY(-1px); filter: brightness(0.98); }
-.btn:active { transform: translateY(0); filter: brightness(0.96); }
+.btn:hover { transform:translateY(-1px); filter:brightness(0.98); }
+.btn:active { transform:translateY(0); filter:brightness(0.96); }
 
-/* Variantes de botón */
-.btn--ghost {
-  --_bg: color-mix(in oklab, var(--accent) 10%, transparent);
-  --_fg: var(--text);
-}
-.btn--outline {
-  background: transparent;
-  color: var(--text);
-  border-color: color-mix(in oklab, var(--accent) 38%, transparent);
-  box-shadow: none;
-}
+.btn--ghost { --_bg: color-mix(in oklab,var(--accent) 10%,transparent); --_fg: var(--text); }
+.btn--outline { background:transparent; color:var(--text); border-color: color-mix(in oklab,var(--accent) 38%,transparent); box-shadow:none; }
 
 /* =====================
    7) UTILIDADES
 ===================== */
 .muted { color: var(--muted); }
-.center { text-align: center; }
+.center { text-align:center; }
 
-/* Badges/etiquetas por si quieres destacar tecnologías */
 .tag {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12.5px;
-  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  display:inline-block; padding:6px 10px; border-radius:999px; font-size:12.5px;
+  border:1px solid color-mix(in oklab,var(--text) 10%,transparent);
 }
-
-/* Animaciones utilitarias para usar luego con JS si quieres */
-.reveal { opacity: 0; transform: translateY(12px); transition: opacity .4s ease, transform .4s ease; }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* =====================
    8) FOOTER
 ===================== */
 footer {
-  padding: 28px 0 40px;
-  border-top: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  padding:28px 0 40px;
+  border-top:1px solid color-mix(in oklab,var(--text) 12%,transparent);
 }
-footer .container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
+footer .container { display:flex; flex-direction:column; align-items:center; gap:8px; }
 footer a { color: var(--accent); }
 footer a:hover { text-decoration: underline; }
 
-.carousel {
-  position: relative;
-  max-width: 600px; /* ajusta el ancho del carrusel */
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.4s ease;
-}
-
-.carousel .proyecto {
-  min-width: 100%; /* cada tarjeta ocupa todo el ancho del carrusel */
-  box-sizing: border-box;
-}
-
-.carousel button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--accent);
-  color: var(--accent-contrast);
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.2s;
-}
-
-.carousel button:hover {
-  background: color-mix(in oklab, var(--accent) 80%, black);
-}
-
-.carousel .prev { left: 10px; }
-.carousel .next { right: 10px; }
-
-
 /* =====================
-   9) RESPONSIVE / ADAPTACIONES
+   9) RESPONSIVE
 ===================== */
-@media (max-width: 720px) {
-  nav ul { gap: 4px; }
-  nav a { padding: 8px 10px; }
-  #sobre-mi img { width: min(160px, 55vw); }
+@media(max-width:720px){
+  nav ul{gap:4px;}
+  nav a{padding:8px 10px;}
+  #sobre-mi img{width:min(160px,55vw);}
 }
-
-/* =====================
-   10) EJEMPLOS DE COMPOSICIÓN
-   Estas reglas ayudan a que tu HTML actual se vea ordenado sin tocarlo.
-===================== */
-/* Aplica el contenedor a nav y a cada sección del main */
-header nav > * { width: 100%; }
-header nav > .container { /* si no pones .container en HTML, aplicamos a nav directamente */ }
-
-/* Si en tu HTML no usaste .container dentro de cada sección, lo simulamos: */
-main > section { padding-inline: 16px; }
-main > section > *:not(.container) { max-width: var(--container); margin-inline: auto; width: 100%; }
-
-/* =====================
-   11) GUÍA RÁPIDA DE PERSONALIZACIÓN
-   (solo comentarios, no es CSS activo)
-===================== */
-/*
-- Cambiar color de acento: modifica --accent en :root. Ej: #2563eb (azul) o #22c55e (verde).
-- Redondeado de tarjetas/botones: cambia --radius.
-- Ancho del contenido: --container (ej: 1200px si tienes muchas capturas).
-- Header más alto/bajo: --header-h.
-- Menos sombras/efecto más plano: reduce --shadow-* o bórralas.
-- Fondos de tarjetas más "glass": sube transparencia de card-border y usa background con color-mix.
-
-Truco: si quieres modo oscuro siempre, copia el bloque de "@media (prefers-color-scheme: dark)"
-y pégalo fuera del media query sustituyendo :root.
-*/
