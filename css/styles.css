@@ -218,6 +218,33 @@ section.container > div {
 }
 
 /* =====================
+   PROJECT BUTTON & "How I built it"
+===================== */
+
+/* 1) Añade margen superior al botón dentro del hero de cada proyecto */
+#project-hero .btn {
+  margin-top: 2rem; /* ajusta según prefieras */
+}
+
+/* 2) Centrar el bloque "How I built it" en cada proyecto */
+#project-details {
+  text-align: center; /* centra título y lista */
+  margin-top: 2rem;
+}
+
+#project-details h3 {
+  margin-bottom: 1rem; /* espacio entre título y lista */
+}
+
+#project-details ol {
+  display: inline-block; /* ajusta la lista al contenido */
+  text-align: left;      /* mantiene numeración alineada a la izquierda */
+  padding-left: 1.5rem;  /* espacio para números */
+  margin: 0 auto;        /* centra la lista dentro del bloque */
+  gap: 0.5rem;
+}
+
+/* =====================
    6) BOTONES
 ===================== */
 .btn {
