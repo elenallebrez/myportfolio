@@ -53,6 +53,41 @@ p { color: var(--muted); margin-bottom: 0.8em; }
   margin-inline: auto;
 }
 
+/* Solo el h3 de Technical Details */
+.tech-title {
+  text-align: center;
+}
+
+/* Lista de puntos (centrada con bullets alineados) */
+.details-list {
+  list-style-position: inside; /* bullets alineados con texto */
+  text-align: center;          /* centra todo el bloque */
+  padding: 0;
+}
+
+/* Subtítulo de How I built it (centrado arriba fijo) */
+.build-title {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Lista numerada normal alineada a la izquierda */
+.build-list {
+  list-style-position: outside;
+  text-align: left;
+  margin-left: 2rem;
+}
+
+/* Forzar el subtítulo a estar fijo arriba de la lista */
+.fixed-heading {
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;   /* siempre alineado a la izquierda */
+}
+
+
 .section-header {
   display: flex;
   justify-content: center; /* centra todo el bloque */
