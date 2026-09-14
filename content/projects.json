@@ -1,0 +1,16 @@
+{
+  "tipo_pagina": "listado_de_proyectos",
+  "ruta_pagina": "allProjects.html",
+  "titulo": "Projects",
+  "descripcion": "Here you can find some of my personal and university projects, showcasing my experience and skills in software development.",
+  "proyectos": [
+    { "nombre": "NLP Pipeline", "descripcion": "NLP pipeline for processing and enriching conversations from a mental health chatbot.", "ruta_pagina": "project/NLP-pipeline-Project.html", "imagen": "img/NLP.png" },
+    { "nombre": "Sevilla Reigns", "descripcion": "A small decision-based game about Seville.", "ruta_pagina": "project/Sevilla-Game.html", "imagen": "img/REIGNS.png" },
+    { "nombre": "Portfolio Website", "descripcion": "My personal portfolio built with HTML and CSS, showcasing my projects, experience, skills, and professional contact.", "ruta_pagina": "project/Portfolio-web.html", "imagen": "img/WEB.png" },
+    { "nombre": "VRP solved by clustering and genetic algorithm", "descripcion": "An application for solving the Vehicle Routing Problem by combining clustering techniques and genetic algorithms, aimed at optimizing distribution routes.", "ruta_pagina": "project/VRP-AI-assignment.html", "imagen": "img/VRP.png" },
+    { "nombre": "Food Delivery System (CRUD + REST API)", "descripcion": "Food ordering platform connecting restaurants and customers.", "ruta_pagina": "project/IISSI-Project.html", "imagen": "img/CRUD.png" },
+    { "nombre": "Requirements Engineering", "descripcion": "Documentation and requirements analysis for a software system.", "ruta_pagina": "project/Ing-Requisitos.html", "imagen": "img/IR.png" },
+    { "nombre": "Java Term Project", "descripcion": "Academic Java project for processing and analyzing baseball data, developed in my first year of university.", "ruta_pagina": "project/Java-Term-Project.html", "imagen": null },
+    { "nombre": "Python Term Project", "descripcion": "Academic Python project for analyzing MBA student data and their employability.", "ruta_pagina": "project/Python-Term-Project.html", "imagen": null }
+  ]
+}

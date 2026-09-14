@@ -1,0 +1,22 @@
+{
+  "tipo_pagina": "perfil_cv",
+  "ruta_pagina": "aboutMe.html",
+  "titulo": "About Me",
+  "descripcion": [
+    "Software Engineering student with a passion for technology and entrepreneurship. During my time in AIESEC, I learned that leadership is not just about managing, but about inspiring and transforming. This experience has motivated me to seek innovative ways to connect technology with solutions that positively impact people.",
+    "My goal is to lead projects that combine creativity, innovation, and purpose, leveraging my knowledge in software engineering to deliver real value and make a difference in an ever-evolving world."
+  ],
+  "experiencia": [
+    { "nombre": "Infiheal", "ubicacion": "India", "fecha": "2025", "puesto": "Volunteer experience", "descripcion": "Volunteer experience in a health-tech startup focused on AI for mental health.", "responsabilidades": ["Worked with data pipelines processing user conversations (Excel to JSON transformation).", "Collaborated on structuring role-based dialogue datasets for LLM training.", "Gained cross-cultural teamwork experience in an international environment."] },
+    { "nombre": "AIESEC", "ubicacion": "Sevilla & International", "fecha": "2023 - 2025", "puesto": "Leadership and volunteer experience", "descripcion": "Leadership and volunteer experience.", "responsabilidades": ["Led and coordinated multicultural teams and projects.", "Developed communication, organizational, and leadership skills.", "Engaged in social impact initiatives through international volunteering."] }
+  ],
+  "educacion": [
+    { "titulo": "Software Engineering", "centro": "Sevilla University", "fecha": "2022-2027", "descripcion": "Training in the design, development, and management of software systems, covering everything from programming, databases, and architecture to agile methodologies, requirements engineering, project management, and software quality." }
+  ],
+  "habilidades": {
+    "hard_skills": ["Java", "Python", "Git", "Pygame", "Software Architecture", "Database", "Agile & Scrum", "Problem Solving"],
+    "soft_skills": ["Leadership", "Project Management", "Teamwork", "Critical Thinking", "Strategic Vision", "Networking & Collaboration", "Creativity"],
+    "idiomas": ["Spanish", "English"]
+  },
+  "imagenes": []
+}

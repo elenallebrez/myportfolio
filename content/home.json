@@ -1,0 +1,27 @@
+{
+  "tipo_pagina": "portada",
+  "ruta_pagina": "index.html",
+  "titulo": "Elena Fernández-Llebrez",
+  "presentacion": "As a Software Engineering student, I combine my technical training with international leadership experiences that have taught me to work in diverse teams and overcome complex challenges. My motivation is to continue growing as a person and professional, contributing creativity, commitment, and a desire to learn in every project. I am open to new challenges that allow me to apply my knowledge and evolve in the field of software.",
+  "secciones_proyectos": [
+    {
+      "titulo": "Personal Projects",
+      "enlace_ver_todos": "allProjects.html",
+      "proyectos": [
+        { "nombre": "NLP pipeline", "descripcion": "NLP pipeline for processing and enriching conversations from a mental health chatbot.", "imagen": "img/NLP.png", "texto_alternativo_imagen": "Infiheal NLP pipeline", "enlace": "project/NLP-pipeline-Project.html" },
+        { "nombre": "Sevilla Reigns", "descripcion": "Small game with decisions about Sevilla", "imagen": "img/REIGNS.png", "texto_alternativo_imagen": "Sevilla Reigns game", "enlace": "project/Sevilla-Game.html" },
+        { "nombre": "Portfolio Web", "descripcion": "Website with my portfolio", "imagen": "img/WEB.png", "texto_alternativo_imagen": "Portfolio Website", "enlace": "project/Portfolio-web.html" }
+      ]
+    },
+    {
+      "titulo": "University Projects",
+      "enlace_ver_todos": "allProjects.html",
+      "proyectos": [
+        { "nombre": "VRP solved by clustering and genetic algorithm", "descripcion": "Application for solving the Vehicle Routing Problem", "imagen": "img/VRP.png", "texto_alternativo_imagen": "VRP solved with AI", "enlace": "project/VRP-AI-assignment.html" },
+        { "nombre": "Food Delivery System (CRUD + API REST)", "descripcion": "Food ordering platform connecting restaurants and customers.", "imagen": "img/CRUD.png", "texto_alternativo_imagen": "Food delivery system", "enlace": "project/IISSI-Project.html" },
+        { "nombre": "Requirement Engineer", "descripcion": "Documentation and requirements analysis for a software system.", "imagen": "img/IR.png", "texto_alternativo_imagen": "Requirement engineering project", "enlace": "project/Ing-Requisitos.html" }
+      ]
+    }
+  ],
+  "contacto": { "github": "https://github.com/elenallebrez", "email": "elenafernandezllebrez@gmail.com", "linkedin": "https://www.linkedin.com/in/elena-fdezllebrez/" }
+}
