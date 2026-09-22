@@ -13,6 +13,7 @@ for (const route of ['', 'about', 'projects', 'contact', 'desktop', 'thanks']) {
 const homePage = await readFile(join(outputDirectory, 'index.html'), 'utf8');
 assert.match(homePage, /data-workspace-trigger/);
 assert.match(homePage, /\/img\/yo-escritorio\.webp/);
+assert.match(homePage, /class="tech-chip"/);
 
 const desktopPage = await readFile(join(outputDirectory, 'desktop', 'index.html'), 'utf8');
 assert.match(desktopPage, /data-desktop-experience/);
@@ -25,6 +26,7 @@ for (const project of projects) {
   );
 
   assert.match(projectPage, new RegExp(project.externalLink.url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(projectPage, /class="tech-chip"/);
 
   if (project.image) {
     assert.match(projectPage, /<source srcset="\/img\/.+\.webp" type="image\/webp">/);

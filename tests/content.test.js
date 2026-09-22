@@ -3,6 +3,7 @@ import { access } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { featuredProjects, projects, site } from '../src/data/content.js';
+import { getTechnologyMeta } from '../src/data/technologies.js';
 
 const currentDirectory = dirname(fileURLToPath(import.meta.url));
 const projectRoot = join(currentDirectory, '..');
@@ -21,6 +22,18 @@ for (const project of projects) {
   if (project.image) {
     await access(join(projectRoot, 'public', project.image));
   }
+
+  for (const technology of project.technologies) {
+    const meta = getTechnologyMeta(technology);
+    assert.ok(meta.icon, `Missing icon mapping for ${technology}`);
+    await access(join(projectRoot, 'public', meta.icon.slice(1)));
+  }
 }
+
+const futureTechnology = getTechnologyMeta('Future Technology');
+assert.equal(futureTechnology.icon, null, 'Unknown technologies should use the fallback chip');
+assert.equal(futureTechnology.initials, 'FT');
+
+await access(join(projectRoot, 'public', 'icons', 'tech', 'ATTRIBUTION.md'));
 
 console.log(`Validated ${projects.length} projects and ${featuredProjects.length} featured entries.`);

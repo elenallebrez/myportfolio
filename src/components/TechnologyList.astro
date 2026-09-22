@@ -1,0 +1,26 @@
+---
+import { getTechnologyMeta } from '@data/technologies.js';
+
+interface Props {
+  technologies: readonly string[];
+}
+
+const { technologies } = Astro.props;
+---
+
+<ul class="tech-list" aria-label="Technologies">
+  {technologies.map((technology) => {
+    const meta = getTechnologyMeta(technology);
+
+    return (
+      <li class:list={['tech-chip', { 'tech-chip--fallback': !meta.icon }]}>
+        {meta.icon ? (
+          <span class="tech-chip__icon" aria-hidden="true" style={`--tech-icon: url("${meta.icon}")`}></span>
+        ) : (
+          <span class="tech-chip__fallback" aria-hidden="true">{meta.initials}</span>
+        )}
+        <span>{technology}</span>
+      </li>
+    );
+  })}
+</ul>

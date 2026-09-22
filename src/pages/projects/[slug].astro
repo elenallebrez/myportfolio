@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import TechnologyList from '@components/TechnologyList.astro';
 import { projects } from '@data/content.js';
 
 export const getStaticPaths = () =>
@@ -30,9 +31,7 @@ const labels: Record<string, string> = {
       <h1 transition:name={`project-title-${project.slug}`}>{project.name}</h1>
       <p class="case-hero__lede">{project.description}</p>
       <div class="case-hero__meta">
-        <ul class="tech-list" aria-label="Technologies">
-          {project.technologies.map((technology) => <li>{technology}</li>)}
-        </ul>
+        <TechnologyList technologies={project.technologies} />
         <a class="button button--primary" href={project.externalLink.url} target="_blank" rel="noreferrer">
           {project.externalLink.texto} <span aria-hidden="true">↗</span>
         </a>
