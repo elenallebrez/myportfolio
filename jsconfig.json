@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@data/*": ["src/data/*"],
+      "@layouts/*": ["src/layouts/*"]
+    },
+    "checkJs": true,
+    "allowJs": true,
+    "strict": true,
+    "moduleResolution": "Bundler",
+    "types": ["node"]
+  },
+  "exclude": ["dist", "node_modules", "js", "project"]
+}

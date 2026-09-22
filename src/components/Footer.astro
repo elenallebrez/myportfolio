@@ -1,0 +1,18 @@
+---
+import { site } from '@data/content.js';
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <a class="footer-email" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+    </div>
+    <nav class="footer-links" aria-label="Professional links">
+      <a href={site.contact.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      <a href={site.contact.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <p class="footer-meta">© 2025 {site.name}</p>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+---
+const { index, label, title, id = undefined, link = null, linkLabel = 'View all' } = Astro.props;
+---
+
+<header class="section-heading reveal" data-reveal>
+  <div class="section-heading__meta">
+    <span>{index}</span>
+    <span>{label}</span>
+  </div>
+  <h2 id={id}>{title}</h2>
+  {link && <a class="text-link section-heading__link" href={link}>{linkLabel}<span aria-hidden="true">→</span></a>}
+</header>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ProjectFeature from '@components/ProjectFeature.astro';
+import { projects } from '@data/content.js';
+import projectListData from '../../../content/projects.json';
+---
+
+<BaseLayout title={projectListData.titulo} description={projectListData.descripcion}>
+  <section class="page-hero page-hero--work shell">
+    <p class="eyebrow reveal" data-reveal>Work / 01—08</p>
+    <h1 transition:name="page-title">Projects.</h1>
+    <p class="page-hero__lede reveal" data-reveal>{projectListData.descripcion}</p>
+  </section>
+
+  <section class="project-index shell" aria-label="All projects">
+    {projects.map((project, index) => <ProjectFeature project={project} position={index} compact />)}
+  </section>
+</BaseLayout>

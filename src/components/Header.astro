@@ -1,0 +1,45 @@
+---
+import { navigation, site } from '@data/content.js';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+const isCurrent = (href: string) =>
+  href === '/projects/' ? currentPath.startsWith('/projects') : currentPath === href;
+---
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner shell">
+    <a class="brand" href="/" aria-label={`${site.name}, home`} transition:name="brand">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span>Elena F.</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {navigation.map((item) => (
+        <a class="nav-link" href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <button class="command-trigger" type="button" data-command-trigger aria-label="Open command palette">
+      <span>Navigate</span>
+      <kbd data-command-key>⌘K</kbd>
+    </button>
+
+    <details class="mobile-nav" data-mobile-nav>
+      <summary>Menu</summary>
+      <nav aria-label="Mobile navigation">
+        {navigation.map((item) => (
+          <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))}
+        <button type="button" data-command-trigger>Search & navigate</button>
+      </nav>
+    </details>
+  </div>
+</header>

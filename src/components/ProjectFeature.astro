@@ -1,0 +1,39 @@
+---
+import { projects } from '@data/content.js';
+
+interface Props {
+  project: typeof projects[number];
+  position?: number;
+  compact?: boolean;
+}
+
+const { project, position = 0, compact = false } = Astro.props;
+const index = String(project.order).padStart(2, '0');
+const webpImage = project.image?.replace(/\.png$/i, '.webp');
+---
+
+<article class:list={['project-feature', { 'project-feature--reverse': position % 2 === 1, 'project-feature--compact': compact }]} data-reveal>
+  {project.image ? (
+    <a class="project-feature__visual" href={`/projects/${project.slug}/`} aria-label={`Read ${project.name}`} transition:name={`project-image-${project.slug}`}>
+      <span class="project-feature__coordinate">{index} / 08</span>
+      <picture>
+        <source srcset={webpImage} type="image/webp" />
+        <img src={project.image} alt={project.imageAlt ?? ''} width="500" height="500" loading={position > 0 ? 'lazy' : 'eager'} decoding="async" />
+      </picture>
+    </a>
+  ) : (
+    <a class="project-feature__visual project-feature__visual--typographic" href={`/projects/${project.slug}/`} aria-label={`Read ${project.name}`}>
+      <span class="project-feature__coordinate">{index} / 08</span>
+      <span class="project-feature__monogram" aria-hidden="true">{project.name.split(' ').slice(0, 2).map((word) => word[0]).join('')}</span>
+    </a>
+  )}
+  <div class="project-feature__content">
+    <p class="project-feature__index">{index}</p>
+    <h3 transition:name={`project-title-${project.slug}`}><a href={`/projects/${project.slug}/`}>{project.name}</a></h3>
+    <p>{project.listDescription}</p>
+    <ul class="tech-list" aria-label="Technologies">
+      {project.technologies.map((technology) => <li>{technology}</li>)}
+    </ul>
+    <a class="text-link" href={`/projects/${project.slug}/`}>View project <span aria-hidden="true">→</span></a>
+  </div>
+</article>

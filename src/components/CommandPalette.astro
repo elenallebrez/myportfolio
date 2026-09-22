@@ -1,0 +1,54 @@
+---
+import { navigation as navigationData, projects as projectData, site } from '@data/content.js';
+
+interface Props {
+  items: typeof navigationData;
+  projects: typeof projectData;
+}
+
+const { items, projects } = Astro.props;
+const socialItems = [
+  { label: 'GitHub', href: site.contact.github, external: true },
+  { label: 'LinkedIn', href: site.contact.linkedin, external: true },
+  { label: 'Email', href: `mailto:${site.contact.email}`, external: true },
+];
+---
+
+<dialog class="command-palette" data-command-dialog aria-labelledby="command-title">
+  <div class="command-palette__panel">
+    <div class="command-palette__topline">
+      <p id="command-title">Navigate portfolio</p>
+      <kbd>ESC</kbd>
+    </div>
+    <label class="sr-only" for="command-search">Search pages, projects and links</label>
+    <input id="command-search" data-command-search type="search" placeholder="Type to navigate…" autocomplete="off" />
+    <div class="command-results" data-command-results>
+      <p class="command-group-label">Pages</p>
+      <a class="command-item" href="/" data-search-item data-search="home elena portfolio">
+        <span>Home</span><span class="command-item__meta">Page</span>
+      </a>
+      {items.map((item) => (
+        <a class="command-item" href={item.href} data-search-item data-search={`${item.label} page`}>
+          <span>{item.label}</span><span class="command-item__meta">Page</span>
+        </a>
+      ))}
+      <p class="command-group-label">Projects</p>
+      {projects.map((project) => (
+        <a class="command-item" href={`/projects/${project.slug}/`} data-search-item data-search={`${project.name} ${project.technologies.join(' ')}`}>
+          <span>{project.name}</span><span class="command-item__meta">{String(project.order).padStart(2, '0')}</span>
+        </a>
+      ))}
+      <p class="command-group-label">Elsewhere</p>
+      {socialItems.map((item) => (
+        <a class="command-item" href={item.href} target={item.external && !item.href.startsWith('mailto:') ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined} data-search-item data-search={`${item.label} external`}>
+          <span>{item.label}</span><span class="command-item__meta">External</span>
+        </a>
+      ))}
+      <p class="command-empty" data-command-empty hidden>No matching destination.</p>
+    </div>
+    <div class="command-palette__footer" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> move</span>
+      <span><kbd>↵</kbd> open</span>
+    </div>
+  </div>
+</dialog>

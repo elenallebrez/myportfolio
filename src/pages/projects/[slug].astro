@@ -1,0 +1,90 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { projects } from '@data/content.js';
+
+export const getStaticPaths = () =>
+  projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+
+interface Props {
+  project: typeof projects[number];
+}
+
+const { project } = Astro.props;
+const webpImage = project.image?.replace(/\.png$/i, '.webp');
+const labels: Record<string, string> = {
+  stack: 'Stack',
+  arquitectura: 'Architecture',
+  rol: 'My role',
+  fecha: 'Timeline',
+  estado: 'Status',
+  enfoque: 'Focus',
+  entregables: 'Deliverables',
+};
+---
+
+<BaseLayout title={project.name} description={project.description} image={project.image}>
+  <article class="case-study">
+    <header class="case-hero shell">
+      <a class="case-hero__back text-link" href="/projects/"><span aria-hidden="true">←</span> All projects</a>
+      <p class="eyebrow">Project {String(project.order).padStart(2, '0')} / 08</p>
+      <h1 transition:name={`project-title-${project.slug}`}>{project.name}</h1>
+      <p class="case-hero__lede">{project.description}</p>
+      <div class="case-hero__meta">
+        <ul class="tech-list" aria-label="Technologies">
+          {project.technologies.map((technology) => <li>{technology}</li>)}
+        </ul>
+        <a class="button button--primary" href={project.externalLink.url} target="_blank" rel="noreferrer">
+          {project.externalLink.texto} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    {project.image && (
+      <div class="case-visual shell reveal" data-reveal transition:name={`project-image-${project.slug}`}>
+        <picture>
+          <source srcset={webpImage} type="image/webp" />
+          <img src={project.image} alt={project.imageAlt ?? ''} width="500" height="500" decoding="async" />
+        </picture>
+      </div>
+    )}
+
+    <div class="case-body shell">
+      <section class="case-section reveal" data-reveal aria-labelledby="overview-title">
+        <p class="case-section__index">01 / Overview</p>
+        <h2 id="overview-title">Summary</h2>
+        <p class="case-section__lead">{project.summary}</p>
+      </section>
+
+      <section class="case-section reveal" data-reveal aria-labelledby="details-title">
+        <p class="case-section__index">02 / Technical details</p>
+        <h2 id="details-title">Technical Details</h2>
+        <dl class="technical-grid">
+          {Object.entries(project.technicalDetails).map(([key, value]) => value && (
+            <div>
+              <dt>{labels[key] ?? key}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section class="case-section reveal" data-reveal aria-labelledby="process-title">
+        <p class="case-section__index">03 / Process</p>
+        <h2 id="process-title">How I built it</h2>
+        <ol class="process-list">
+          {project.process.map((step, index) => (
+            <li><span>{String(index + 1).padStart(2, '0')}</span><p>{step}</p></li>
+          ))}
+        </ol>
+      </section>
+    </div>
+
+    <nav class="case-next shell" aria-label="Project navigation">
+      <p class="eyebrow">Continue exploring</p>
+      {(() => {
+        const next = projects[(project.order) % projects.length];
+        return <a href={`/projects/${next.slug}/`}><span>Next project</span><strong>{next.name}</strong><span aria-hidden="true">→</span></a>;
+      })()}
+    </nav>
+  </article>
+</BaseLayout>
