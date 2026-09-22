@@ -6,9 +6,17 @@ import { projects } from '../src/data/content.js';
 const root = new URL('..', import.meta.url).pathname.replace(/^\/(?:[A-Za-z]:)/, (drive) => drive.slice(1));
 const outputDirectory = join(root, 'dist');
 
-for (const route of ['', 'about', 'projects', 'contact', 'thanks']) {
+for (const route of ['', 'about', 'projects', 'contact', 'desktop', 'thanks']) {
   await access(join(outputDirectory, route, 'index.html'));
 }
+
+const homePage = await readFile(join(outputDirectory, 'index.html'), 'utf8');
+assert.match(homePage, /data-workspace-trigger/);
+assert.match(homePage, /\/img\/yo-escritorio\.webp/);
+
+const desktopPage = await readFile(join(outputDirectory, 'desktop', 'index.html'), 'utf8');
+assert.match(desktopPage, /data-desktop-experience/);
+assert.match(desktopPage, /Back to portfolio/);
 
 for (const project of projects) {
   const projectPage = await readFile(
@@ -34,4 +42,4 @@ for (const project of projects) {
   assert.ok(redirects.includes(`/projects/${project.slug}/`), `Missing destination for ${project.slug}`);
 }
 
-console.log(`Validated ${projects.length + 5} generated pages, the Netlify form, and legacy redirects.`);
+console.log(`Validated ${projects.length + 6} generated pages, the workspace, the Netlify form, and legacy redirects.`);

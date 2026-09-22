@@ -156,6 +156,100 @@ const initializeContactForm = (signal) => {
   }, { signal });
 };
 
+/** @param {AbortSignal} signal */
+const initializeWorkspaceEntry = (signal) => {
+  const trigger = document.querySelector('[data-workspace-trigger]');
+  const image = trigger?.querySelector('img');
+
+  if (!(trigger instanceof HTMLButtonElement) || !(image instanceof HTMLImageElement)) return;
+
+  let isEntering = false;
+  /** @type {HTMLDivElement | null} */
+  let overlay = null;
+
+  const goToWorkspace = () => window.location.assign('/desktop/');
+
+  const enterWorkspace = async () => {
+    if (isEntering) return;
+    isEntering = true;
+    trigger.disabled = true;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !Element.prototype.animate) {
+      goToWorkspace();
+      return;
+    }
+
+    const rect = image.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const scale = Math.max(window.innerWidth / rect.width, window.innerHeight / rect.height) * 1.18;
+    const offsetX = window.innerWidth / 2 - centerX;
+    const offsetY = window.innerHeight / 2 - centerY;
+
+    overlay = document.createElement('div');
+    overlay.className = 'workspace-transition';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    const veil = document.createElement('div');
+    veil.className = 'workspace-transition__veil';
+
+    const transitionImage = /** @type {HTMLImageElement} */ (image.cloneNode());
+    transitionImage.removeAttribute('loading');
+    transitionImage.removeAttribute('fetchpriority');
+    transitionImage.src = image.currentSrc || image.src;
+    transitionImage.style.left = `${rect.left}px`;
+    transitionImage.style.top = `${rect.top}px`;
+    transitionImage.style.width = `${rect.width}px`;
+    transitionImage.style.height = `${rect.height}px`;
+
+    overlay.append(veil, transitionImage);
+    document.body.append(overlay);
+    document.documentElement.classList.add('is-workspace-entering');
+
+    try {
+      const imageAnimation = transitionImage.animate([
+        { transform: 'translate3d(0, 0, 0) scale(1)', opacity: 1 },
+        { transform: `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${scale})`, opacity: 0.14 },
+      ], {
+        duration: 1050,
+        easing: 'cubic-bezier(0.76, 0, 0.24, 1)',
+        fill: 'forwards',
+      });
+
+      const veilAnimation = veil.animate([
+        { opacity: 0 },
+        { opacity: 0.16, offset: 0.45 },
+        { opacity: 1 },
+      ], {
+        duration: 1050,
+        easing: 'cubic-bezier(0.76, 0, 0.24, 1)',
+        fill: 'forwards',
+      });
+
+      await Promise.all([imageAnimation.finished, veilAnimation.finished]);
+    } catch {
+      // Navigation still completes if the animation is interrupted.
+    }
+
+    if (!signal.aborted) goToWorkspace();
+  };
+
+  trigger.addEventListener('click', enterWorkspace, { signal });
+  signal.addEventListener('abort', () => {
+    overlay?.remove();
+    document.documentElement.classList.remove('is-workspace-entering');
+  }, { once: true });
+};
+
+/** @param {AbortSignal} signal */
+const initializeDesktopExperience = (signal) => {
+  if (!document.querySelector('[data-desktop-experience]')) return;
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') window.location.assign('/');
+  }, { signal });
+};
+
 const initializeSite = () => {
   cleanupCurrentPage();
 
@@ -164,12 +258,20 @@ const initializeSite = () => {
   initializeCommandPalette(controller.signal);
   initializeHeader(controller.signal);
   initializeContactForm(controller.signal);
+  initializeWorkspaceEntry(controller.signal);
+  initializeDesktopExperience(controller.signal);
 
   cleanupCurrentPage = () => {
     controller.abort();
     observerCleanup();
   };
 };
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeSite, { once: true });
+} else {
+  initializeSite();
+}
 
 document.addEventListener('astro:page-load', initializeSite);
 document.addEventListener('astro:before-swap', () => cleanupCurrentPage());

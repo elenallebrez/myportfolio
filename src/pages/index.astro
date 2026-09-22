@@ -2,6 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import ProjectFeature from '@components/ProjectFeature.astro';
 import SectionHeader from '@components/SectionHeader.astro';
+import VoxelWorkspace from '@components/VoxelWorkspace.astro';
 import { cv, featuredProjects, site } from '@data/content.js';
 ---
 
@@ -22,6 +23,7 @@ import { cv, featuredProjects, site } from '@data/content.js';
         </div>
       </div>
     </div>
+    <VoxelWorkspace />
     <p class="hero__scroll" aria-hidden="true"><span></span> Scroll to explore</p>
   </section>
 

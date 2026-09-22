@@ -1,0 +1,59 @@
+---
+import DesktopLayout from '@layouts/DesktopLayout.astro';
+---
+
+<DesktopLayout>
+  <div class="desktop-shell" data-desktop-experience>
+    <header class="desktop-topbar">
+      <a class="desktop-identity" href="/">
+        <span aria-hidden="true"></span>
+        Elena / Workspace
+      </a>
+      <p aria-hidden="true">Session 01 · Online</p>
+      <a class="desktop-return" href="/">
+        <span aria-hidden="true">←</span> Back to portfolio
+      </a>
+    </header>
+
+    <main class="desktop-main" id="main-content">
+      <section class="desktop-window" aria-labelledby="desktop-title">
+        <header class="desktop-window__bar">
+          <div class="desktop-window__controls" aria-hidden="true"><span></span><span></span><span></span></div>
+          <p>WELCOME.EXE</p>
+          <span aria-hidden="true">01</span>
+        </header>
+
+        <div class="desktop-window__content">
+          <p class="desktop-window__eyebrow">Personal workspace</p>
+          <h1 id="desktop-title">Welcome to<br />my computer.</h1>
+          <p class="desktop-window__intro">
+            A small doorway into my work, background and the ways we can build something together.
+          </p>
+
+          <nav class="desktop-shortcuts" aria-label="Workspace shortcuts">
+            <a href="/projects/">
+              <span>01</span>
+              <strong>Projects</strong>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href="/about/">
+              <span>02</span>
+              <strong>About me</strong>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href="/contact/">
+              <span>03</span>
+              <strong>Contact</strong>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </nav>
+        </div>
+
+        <footer class="desktop-window__footer">
+          <p>Portfolio interface · Astro / JavaScript</p>
+          <p><kbd>Esc</kbd> Return</p>
+        </footer>
+      </section>
+    </main>
+  </div>
+</DesktopLayout>
